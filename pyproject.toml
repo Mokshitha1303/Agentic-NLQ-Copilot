@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling>=1.26.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "enterprise-nlq-copilot"
+version = "0.1.0"
+description = "Agentic enterprise NLQ copilot over Spider with LangGraph, safety guardrails, and execution benchmarking."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "langgraph>=0.2.70",
+  "langchain-core>=0.3.40",
+  "langchain-openai>=0.3.5",
+  "python-dotenv>=1.0.1",
+  "sqlglot>=25.20.0",
+  "fastapi>=0.116.0",
+  "uvicorn>=0.35.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.4",
+  "pytest-cov>=5.0.0",
+  "ruff>=0.8.6",
+]
+
+[project.scripts]
+nlq-copilot = "copilot.cli:main"
+nlq-copilot-api = "copilot.api:run"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/copilot"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
