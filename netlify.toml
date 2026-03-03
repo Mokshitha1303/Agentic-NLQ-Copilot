@@ -1,0 +1,9 @@
+[build]
+  publish = "web"
+
+# Replace this URL with your Render backend URL after first API deploy.
+[[redirects]]
+  from = "/api/*"
+  to = "https://agentic-nlq-copilot-api.onrender.com/:splat"
+  status = 200
+  force = true

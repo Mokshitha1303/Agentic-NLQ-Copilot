@@ -1,0 +1,126 @@
+[
+  {
+    "db_id": "concert_singer",
+    "query": "SELECT count(*) FROM singer",
+    "query_toks": [
+      "SELECT",
+      "count(*)",
+      "FROM",
+      "singer"
+    ],
+    "query_toks_no_value": [
+      "SELECT",
+      "count(*)",
+      "FROM",
+      "singer"
+    ],
+    "question": "How many singers are there?",
+    "question_toks": [
+      "How",
+      "many",
+      "singers",
+      "are",
+      "there?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            0
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            3,
+            [
+              0,
+              [
+                0,
+                0,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  },
+  {
+    "db_id": "concert_singer",
+    "query": "SELECT name FROM singer ORDER BY name",
+    "query_toks": [
+      "SELECT",
+      "name",
+      "FROM",
+      "singer",
+      "ORDER",
+      "BY",
+      "name"
+    ],
+    "query_toks_no_value": [
+      "SELECT",
+      "name",
+      "FROM",
+      "singer",
+      "ORDER",
+      "BY",
+      "name"
+    ],
+    "question": "List singer names.",
+    "question_toks": [
+      "List",
+      "singer",
+      "names."
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            0
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            3,
+            [
+              0,
+              [
+                0,
+                0,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  }
+]

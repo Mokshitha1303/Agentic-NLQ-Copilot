@@ -1,4 +1,4 @@
-# Agentic NLQ Copilot (Spider + LangGraph)
+# Enterprise NLQ Copilot (Spider + LangGraph)
 
 This project is an **agentic enterprise NLQ copilot** that converts natural-language business questions into safe, executable SQL over Spider databases.
 
@@ -56,6 +56,10 @@ The project uses:
 - `test_database/` as the primary SQLite DB root
 - fallback to `database/` if needed
 
+For free cloud deployment, this repo includes a lightweight Spider-compatible demo subset at:
+
+`data/spider_data`
+
 ## Installation
 
 ```bash
@@ -112,6 +116,44 @@ curl -X POST "http://localhost:8000/v1/query" ^
   -H "Content-Type: application/json" ^
   -d "{\"db_id\":\"concert_singer\",\"question\":\"How many singers are there?\"}"
 ```
+
+## Free Deployment (Render + Netlify)
+
+This project deploys free with a split architecture:
+
+- Render (FastAPI backend)
+- Netlify (static frontend + `/api/*` proxy)
+
+Deployment config files included:
+
+- `render.yaml`
+- `netlify.toml`
+- `web/` (Netlify frontend)
+- `DEPLOYMENT.md` (step-by-step guide)
+
+### Backend on Render
+
+1. Create Web Service from this repo.
+2. Render will auto-use `render.yaml`.
+3. Add secret `OPENAI_API_KEY`.
+4. Set dataset env for demo mode:
+
+```text
+SPIDER_DATASET_ROOT=data/spider_data
+```
+
+5. Verify:
+
+- `/health`
+- `/docs`
+
+### Frontend on Netlify
+
+1. Import this repo in Netlify.
+2. Publish directory: `web`
+3. In `netlify.toml`, set redirect target to your Render URL.
+
+Then open your Netlify site and run queries from the UI.
 
 ## CLI Usage
 

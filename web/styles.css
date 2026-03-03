@@ -1,0 +1,99 @@
+:root {
+  --bg: #f4f7fb;
+  --panel: #ffffff;
+  --text: #10213c;
+  --muted: #4c5f7d;
+  --accent: #0056d2;
+  --border: #d6e0ef;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  background: radial-gradient(circle at top, #e9f0ff, var(--bg) 40%);
+  color: var(--text);
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.hero p {
+  margin-top: 0.5rem;
+  color: var(--muted);
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem;
+  margin-top: 1rem;
+  box-shadow: 0 8px 20px rgba(16, 33, 60, 0.06);
+}
+
+.panel h2 {
+  margin-top: 0.2rem;
+}
+
+form {
+  display: grid;
+  gap: 0.7rem;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+textarea {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.6rem 0.7rem;
+}
+
+button {
+  width: fit-content;
+  background: var(--accent);
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #0e1f38;
+  color: #e6efff;
+  border-radius: 10px;
+  padding: 0.8rem;
+  max-height: 420px;
+  overflow: auto;
+}

@@ -9,6 +9,7 @@ from uuid import uuid4
 
 import uvicorn
 from fastapi import FastAPI, HTTPException, Request
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, ConfigDict, Field
 
 from .agent import EnterpriseNLQCopilot
@@ -182,6 +183,12 @@ def _resolve_llm_mode(use_llm: bool | None) -> bool:
     return _parse_bool_env(os.getenv("COPILOT_USE_LLM"), default=True)
 
 
+def _parse_cors_origins(raw: str | None) -> list[str]:
+    if not raw:
+        return []
+    return [origin.strip() for origin in raw.split(",") if origin.strip()]
+
+
 def _build_copilot(config: CopilotConfig, use_llm: bool) -> EnterpriseNLQCopilot:
     try:
         return EnterpriseNLQCopilot.from_config(config=config, use_llm=use_llm)
@@ -226,6 +233,15 @@ def create_app(
         openapi_url="/openapi.json",
         lifespan=lifespan,
     )
+    cors_origins = _parse_cors_origins(os.getenv("API_CORS_ORIGINS"))
+    if cors_origins:
+        app.add_middleware(
+            CORSMiddleware,
+            allow_origins=cors_origins,
+            allow_credentials=True,
+            allow_methods=["*"],
+            allow_headers=["*"],
+        )
 
     @app.get("/", response_model=ServiceInfo, tags=["platform"])
     def root(request: Request) -> ServiceInfo:
@@ -348,16 +364,21 @@ def create_app(
     @app.post("/v1/benchmark", response_model=BenchmarkResponse, tags=["reliability"])
     def benchmark(payload: BenchmarkRequest, request: Request) -> BenchmarkResponse:
         copilot: EnterpriseNLQCopilot = request.app.state.copilot
-        summary = run_spider_benchmark(
-            copilot,
-            split=payload.split,
-            mode=payload.mode,
-            limit=payload.limit,
-            max_rows=payload.max_rows,
-            timeout_ms=payload.timeout_ms,
-            output_dir=Path(payload.output_dir),
-            run_safety_checks=payload.run_safety_checks,
-        )
+        try:
+            summary = run_spider_benchmark(
+                copilot,
+                split=payload.split,
+                mode=payload.mode,
+                limit=payload.limit,
+                max_rows=payload.max_rows,
+                timeout_ms=payload.timeout_ms,
+                output_dir=Path(payload.output_dir),
+                run_safety_checks=payload.run_safety_checks,
+            )
+        except (FileNotFoundError, ValueError) as exc:
+            raise HTTPException(status_code=400, detail=str(exc)) from exc
+        except Exception as exc:
+            raise HTTPException(status_code=500, detail=f"Benchmark failed: {exc}") from exc
         return BenchmarkResponse(summary=summary)
 
     return app

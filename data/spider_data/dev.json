@@ -1,0 +1,76 @@
+[
+  {
+    "db_id": "concert_singer",
+    "query": "SELECT name FROM singer WHERE country = 'USA' ORDER BY name",
+    "query_toks": [
+      "SELECT",
+      "name",
+      "FROM",
+      "singer",
+      "WHERE",
+      "country",
+      "=",
+      "'USA'",
+      "ORDER",
+      "BY",
+      "name"
+    ],
+    "query_toks_no_value": [
+      "SELECT",
+      "name",
+      "FROM",
+      "singer",
+      "WHERE",
+      "country",
+      "=",
+      "'USA'",
+      "ORDER",
+      "BY",
+      "name"
+    ],
+    "question": "Which singers are from USA?",
+    "question_toks": [
+      "Which",
+      "singers",
+      "are",
+      "from",
+      "USA?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            0
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            3,
+            [
+              0,
+              [
+                0,
+                0,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  }
+]

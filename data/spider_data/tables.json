@@ -1,0 +1,66 @@
+[
+  {
+    "db_id": "concert_singer",
+    "table_names": [
+      "singer"
+    ],
+    "table_names_original": [
+      "singer"
+    ],
+    "column_names": [
+      [
+        -1,
+        "*"
+      ],
+      [
+        0,
+        "singer id"
+      ],
+      [
+        0,
+        "name"
+      ],
+      [
+        0,
+        "country"
+      ],
+      [
+        0,
+        "age"
+      ]
+    ],
+    "column_names_original": [
+      [
+        -1,
+        "*"
+      ],
+      [
+        0,
+        "singer_id"
+      ],
+      [
+        0,
+        "name"
+      ],
+      [
+        0,
+        "country"
+      ],
+      [
+        0,
+        "age"
+      ]
+    ],
+    "column_types": [
+      "text",
+      "number",
+      "text",
+      "text",
+      "number"
+    ],
+    "primary_keys": [
+      1
+    ],
+    "foreign_keys": []
+  }
+]

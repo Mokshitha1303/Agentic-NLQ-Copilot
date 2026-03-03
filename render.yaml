@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: agentic-nlq-copilot-api
+    env: python
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /health
+    buildCommand: pip install -e .
+    startCommand: uvicorn copilot.api:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+      - key: COPILOT_USE_LLM
+        value: "true"
+      - key: SPIDER_DATASET_ROOT
+        value: data/spider_data
+      - key: SPIDER_TABLES_FILE
+        value: test_tables.json
+      - key: SPIDER_DB_DIR
+        value: test_database
+      - key: SPIDER_TRAIN_DB_DIR
+        value: database
+      - key: OPENAI_TEMPERATURE
+        value: "0.0"
+      - key: OPENAI_TIMEOUT_S
+        value: "45"

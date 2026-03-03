@@ -1,0 +1,64 @@
+[
+  {
+    "db_id": "concert_singer",
+    "query": "SELECT avg(age) FROM singer",
+    "query_toks": [
+      "SELECT",
+      "avg(age)",
+      "FROM",
+      "singer"
+    ],
+    "query_toks_no_value": [
+      "SELECT",
+      "avg(age)",
+      "FROM",
+      "singer"
+    ],
+    "question": "What is the average age of singers?",
+    "question_toks": [
+      "What",
+      "is",
+      "the",
+      "average",
+      "age",
+      "of",
+      "singers?"
+    ],
+    "sql": {
+      "from": {
+        "table_units": [
+          [
+            "table_unit",
+            0
+          ]
+        ],
+        "conds": []
+      },
+      "select": [
+        false,
+        [
+          [
+            3,
+            [
+              0,
+              [
+                0,
+                0,
+                false
+              ],
+              null
+            ]
+          ]
+        ]
+      ],
+      "where": [],
+      "groupBy": [],
+      "having": [],
+      "orderBy": [],
+      "limit": null,
+      "intersect": null,
+      "union": null,
+      "except": null
+    }
+  }
+]

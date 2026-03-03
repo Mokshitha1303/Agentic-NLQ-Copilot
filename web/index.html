@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agentic NLQ Copilot</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <h1>Agentic NLQ Copilot</h1>
+        <p>Ask business questions and get safe SQL-backed answers.</p>
+      </section>
+
+      <section class="panel">
+        <h2>Ask a Question</h2>
+        <form id="query-form">
+          <label for="db-id">Database ID</label>
+          <input id="db-id" name="db-id" type="text" value="concert_singer" required />
+
+          <label for="question">Question</label>
+          <textarea
+            id="question"
+            name="question"
+            rows="4"
+            placeholder="How many singers are there?"
+            required
+          ></textarea>
+
+          <div class="row">
+            <label for="max-rows">Max Rows</label>
+            <input id="max-rows" name="max-rows" type="number" min="1" max="5000" value="200" />
+          </div>
+
+          <button type="submit" id="run-btn">Run Query</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Response</h2>
+        <pre id="response">Submit a query to view response.</pre>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
