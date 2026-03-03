@@ -1,4 +1,4 @@
-# Enterprise NLQ Copilot (Spider + LangGraph)
+# Agentic NLQ Copilot (Spider + LangGraph)
 
 This project is an **agentic enterprise NLQ copilot** that converts natural-language business questions into safe, executable SQL over Spider databases.
 
